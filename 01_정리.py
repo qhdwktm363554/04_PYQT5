@@ -3,13 +3,20 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox, QMa
 
 from PyQt5.QtCore import QCoreApplication
 
+sys.path.append("d:\09.python\anaconda\pkgs")
 
 
-class Option_window(QWidget):
+
+class Option_window(QStackedWidget):
     def __init__(self):
         super().__init__()
-        self.secondUI(self)
+        # 아래와 동일하다.
+        # parent = super()
+        # parent.__init__()
+
+        # self.secondUI()
     def secondUI(self):
+        # self.secondUI = secondUI
         btn = QPushButton('BS1', self)
         btn.setToolTip('let us get <b>placememt list from Pro<b/>')
         btn.resize(btn.sizeHint())
@@ -62,9 +69,20 @@ class This_one_is_main_window (QMainWindow):
     #     return self.QPushButton.text()
     def clicked_option(self):
         # text_1 = self.btn2.QPushButton.text()
-        # line = text_1
-        # print(line)
+        self.line = "BS2"
+        print("line is {}".format(self.line))
         Option_window()
+
+        # self.secondUI()
+    # def Option_window(self):
+    #     # self.secondUI = secondUI
+    #     btn = QPushButton('BS1', self)
+    #     btn.setToolTip('let us get <b>placememt list from Pro<b/>')
+    #     btn.resize(btn.sizeHint())
+    #     btn.move(20, 30)
+    #     self.setGeometry(400, 200, 400, 500)
+    #     self.setWindowTitle('Line is selected')
+    #     self.show()
 
 
 
@@ -78,11 +96,11 @@ class This_one_is_main_window (QMainWindow):
 
 
 
-app = QApplication(sys.argv)
+app = QApplication(sys.argv)        #event loop
 print(sys.argv)
 print(sys)
 # app = QApplication([])
 w = This_one_is_main_window()
 w.show()
-app.exec_()
-# sys.exit(app.exec_())
+# app.exec_()
+sys.exit(app.exec_())         #event loop를 실행시킨다. 
